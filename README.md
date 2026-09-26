@@ -4,9 +4,15 @@
 
 ## Repository Description
 
-OpenTofu **example** module that creates a Google Cloud Storage bucket with uniform bucket-level access enforced, public access prevention, and optional object versioning. It supports customer-managed encryption keys (CMEK) and a configurable storage class (STANDARD, NEARLINE, COLDLINE, ARCHIVE, etc.).
+Reusable OpenTofu child module that creates a Google Cloud Storage bucket with uniform bucket-level access enforced, public access prevention, and optional object versioning. It supports customer-managed encryption keys (CMEK) and a configurable storage class (STANDARD, NEARLINE, COLDLINE, ARCHIVE, etc.).
 
 ## 🔩 Usage
+
+### Module interface
+
+Consume the repository root with `source = "github.com/osinfra-io/pt-arche-google-storage-bucket?ref=<commit_sha>"`. See [`variables.tofu`](variables.tofu) and [`outputs.tofu`](outputs.tofu).
+
+Uniform bucket-level access and public access prevention are enforced by default, object versioning defaults to enabled, and `force_destroy` defaults to false. An optional CMEK can be supplied through `default_kms_key_name`; the caller must grant the Cloud Storage service agent access to that key. Versioning, retained noncurrent objects, non-Standard storage classes, data retrieval, egress, and KMS operations can increase cost. Setting `force_destroy = true` permits deletion of all objects with the bucket and should be used only when that data-loss behavior is intentional.
 
 > [!TIP]
 > You can check the [tests/fixtures](tests/fixtures) directory for example configurations. These fixtures set up the system for testing by providing all the necessary initial code, thus creating good examples on which to base your configurations.
