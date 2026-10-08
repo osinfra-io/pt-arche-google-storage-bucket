@@ -15,7 +15,7 @@ Consume the repository root with `source = "github.com/osinfra-io/pt-arche-googl
 Uniform bucket-level access and public access prevention are enforced by default, object versioning defaults to enabled, and `force_destroy` defaults to false. An optional CMEK can be supplied through `default_kms_key_name`; the caller must grant the Cloud Storage service agent access to that key. Versioning, retained noncurrent objects, non-Standard storage classes, data retrieval, egress, and KMS operations can increase cost. Setting `force_destroy = true` permits deletion of all objects with the bucket and should be used only when that data-loss behavior is intentional.
 
 > [!TIP]
-> See [tests/fixtures](tests/fixtures) for example configurations.
+> You can check the [tests/fixtures](tests/fixtures) directory for example configurations. These fixtures set up the system for testing by providing all the necessary initial code, thus creating good examples on which to base your configurations.
 
 Google project services must be enabled before using this module. As a best practice, these should be defined in the [pt-arche-google-project](https://github.com/osinfra-io/pt-arche-google-project) module. The following services are required:
 
