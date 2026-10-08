@@ -15,7 +15,7 @@ Consume the repository root with `source = "github.com/osinfra-io/pt-arche-googl
 Uniform bucket-level access and public access prevention are enforced by default, object versioning defaults to enabled, and `force_destroy` defaults to false. An optional CMEK can be supplied through `default_kms_key_name`; the caller must grant the Cloud Storage service agent access to that key. Versioning, retained noncurrent objects, non-Standard storage classes, data retrieval, egress, and KMS operations can increase cost. Setting `force_destroy = true` permits deletion of all objects with the bucket and should be used only when that data-loss behavior is intentional.
 
 > [!TIP]
-> You can check the [tests/fixtures](tests/fixtures) directory for example configurations. These fixtures set up the system for testing by providing all the necessary initial code, thus creating good examples on which to base your configurations.
+> See [tests/fixtures](tests/fixtures) for example configurations.
 
 Google project services must be enabled before using this module. As a best practice, these should be defined in the [pt-arche-google-project](https://github.com/osinfra-io/pt-arche-google-project) module. The following services are required:
 
@@ -28,13 +28,11 @@ Google project services must be enabled before using this module. As a best prac
 
 ## 📋 Skills and Knowledge
 
-Links to documentation and other resources required to develop and iterate in this repository successfully.
-
 - [storage bucket](https://cloud.google.com/storage/docs/buckets)
 
 ## 🔍 Tests
 
-All tests are [mocked](https://opentofu.org/docs/cli/commands/test/#the-mock_provider-blocks) allowing us to test the module without creating infrastructure or requiring credentials. The trade-offs are acceptable in favor of speed and simplicity. In an OpenTofu test, a mocked provider or resource will generate fake data for all computed attributes that would normally be provided by the underlying provider APIs.
+Tests use [mocked providers](https://opentofu.org/docs/cli/commands/test/#the-mock_provider-blocks); no infrastructure or credentials are required.
 
 ```none
 tofu init
