@@ -15,6 +15,5 @@ run "default" {
 }
 
 variables {
-  environment = "mock-environment"
-  project     = "mock-project"
+  project = "mock-project"
 }
